@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Ly - Ngày 8/3</title>
+    <style>
+        body {
+            font-family: 'Pacifico', cursive;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        p {
+            font-size: 1.5rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+        .heart {
+            color: #e74c3c;
+            font-size: 2rem;
+            animation: beat 1s infinite;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .gallery img {
+            width: 200px;
+            height: 200px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        button {
+            background-color: #e74c3c;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #c0392b;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Chúc Mừng Ngày 8/3, Ly ❤️</h1>
+    <p>Em là người phụ nữ tuyệt vời nhất trong cuộc đời anh.</p>
+    <p>Anh yêu em nhiều lắm! <span class="heart">❤️</span></p>
+
+    <div class="gallery">
+        <img src="https://picsum.photos/200/200?random=1" alt="Kỉ niệm 1">
+        <img src="https://picsum.photos/200/200?random=2" alt="Kỉ niệm 2">
+        <img src="https://picsum.photos/200/200?random=3" alt="Kỉ niệm 3">
+    </div>
+
+    <button onclick="showMessage()">Nhấn vào đây nè!</button>
+
+    <script>
+        // Hiệu ứng chữ viết tay
+        const text = document.querySelector('h1');
+        const strText = text.textContent;
+        const splitText = strText.split("");
+        text.textContent = "";
+
+        for (let i = 0; i < splitText.length; i++) {
+            text.innerHTML += "<span>" + splitText[i] + "</span>";
+        }
+
+        let char = 0;
+        let timer = setInterval(onTick, 50);
+
+        function onTick() {
+            const span = text.querySelectorAll('span')[char];
+            span.classList.add('fade');
+            char++;
+            if (char === splitText.length) {
+                complete();
+                return;
+            }
+        }
+
+        function complete() {
+            clearInterval(timer);
+            timer = null;
+        }
+
+        // Hiển thị lời nhắn khi nhấn nút
+        function showMessage() {
+            alert("Anh yêu em nhiều lắm, Ly! ❤️\nChúc em một ngày 8/3 thật hạnh phúc và ý nghĩa!");
+        }
+    </script>
+</body>
+</html>
